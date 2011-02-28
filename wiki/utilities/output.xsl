@@ -22,16 +22,9 @@
 			<dl>
 				<xsl:for-each select="/view/actors/children/item">
 					<dt>
-						<xsl:choose>
-							<xsl:when test="@more = 'yes'">
-								<a href="{$constants/base-url}/{@path}">
-									<xsl:value-of select="@name" />
-								</a>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:value-of select="@name" />
-							</xsl:otherwise>
-						</xsl:choose>
+						<a href="{$constants/base-url}/{@path}">
+							<xsl:value-of select="@name" />
+						</a>
 					</dt>
 					<dd>
 						<xsl:apply-templates select="*" mode="output" />
