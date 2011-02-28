@@ -252,6 +252,7 @@
 			-o-border-radius: 10px;
 			-webkit-border-radius: 10px;
 			border-spacing: 0;
+			display: block;
 			font-size: 13px;
 			margin: 20px 0;
 			padding: 10px;
@@ -304,6 +305,19 @@
 		#view table th {
 			font-weight: bold;
 		}
+		
+		/* @group Checklist */
+			
+			#view table.checklist {
+				counter-reset: checklist;
+			}
+			#view table.checklist tr > :first-child:before {
+				counter-increment: checklist;
+				content: counter(checklist) '. ';
+				font-weight: bold;
+			}
+			
+		/* @end */
 		
 	/* @end */
 	
@@ -397,6 +411,7 @@
 	/* @group Code */
 		
 		#view code {
+			color: #666666;
 			font-family: 'monaco';
 			font-size: 95%;
 			line-height: 1;
