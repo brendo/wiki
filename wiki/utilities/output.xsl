@@ -152,7 +152,7 @@
 		</xsl:attribute>
 	</xsl:template>
 	
-	<xsl:template match="@href" mode="output-inline">
+	<xsl:template match="@href | @src" mode="output-inline">
 		<xsl:variable name="is-external" select="starts-with(., 'http://') or starts-with(., 'https://')" />
 		<xsl:variable name="is-root" select="starts-with(., '/')" />
 		<xsl:variable name="is-bookmark" select="starts-with(., '#')" />
@@ -167,6 +167,10 @@
 			</xsl:if>
 			
 			<xsl:if test="not($is-external or $is-root or $is-bookmark) and $parameters/document-url != ''">
+				<xsl:if test='../@rel = "file" or local-name() = "src"'>
+					<xsl:value-of select="$constants/base-url" />
+					<xsl:text>/wiki/docs/</xsl:text>
+				</xsl:if>
 				<xsl:value-of select="$parameters/document-url" />
 				<xsl:text>/</xsl:text>
 			</xsl:if>
